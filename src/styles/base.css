@@ -209,4 +209,9 @@ main {
     --cntr-mw: 768px;
     --cntr-pi: 0;
   }
+
+
+  .postnav {
+    --cntr-gtc: 1fr 1fr;
+  }
 }

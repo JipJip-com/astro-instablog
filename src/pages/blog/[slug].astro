@@ -5,6 +5,8 @@ import { getCollection, render } from "astro:content";
 import { settings } from '@config/site.json';
 
 import Layout from "@layouts/Layout.astro";
+import { getFilteredArticles } from '@lib/getArticles';
+import { allowedDirectivesSchema } from 'node_modules/astro/dist/core/csp/config';
 
 /* Generate a new path for every blog entry */
 export async function getStaticPaths() {
@@ -17,6 +19,11 @@ export async function getStaticPaths() {
 
 const meta = Astro.props.entry.data,
       { Content } = await render(Astro.props.entry);
+
+const articles = await getFilteredArticles(),
+      thisArticle = articles.findIndex(a => a.id === Astro.props.entry.id),
+      nextArticle = thisArticle > 0 ? articles[thisArticle-1] : null,
+      prevArticle = thisArticle < articles.length ? articles[thisArticle+1] : null
 ---
 
 <Layout meta={meta}>
@@ -42,5 +49,19 @@ const meta = Astro.props.entry.data,
         <Content />
       </div>
     </article>
+    <div class="cntr postnav">
+      {prevArticle && 
+        <a 
+          href={`/blog/${prevArticle.id}`}
+          title='{prevArticle.data.title}'
+          class="btn">{prevArticle.data.title}</div>
+      }
+      {nextArticle && 
+        <a 
+          href={`/blog/${nextArticle.id}`}
+          title='nextArticle.data.title'
+          class="btn">{nextArticle.data.title}</div>
+      }
+    </div>
   </section>
 </Layout>
