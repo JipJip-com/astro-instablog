@@ -72,6 +72,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+
 /* defaults */
 h1,h2,h3,h4,h5,h6 {
   text-wrap: balance;
@@ -104,6 +105,11 @@ body {
   font-family: var(--ff-base);
   font-size: 1.25rem;
   line-height: 1.25;
+}
+
+pre {
+  padding-block: 1rem;
+  padding-inline: 0.5rem;
 }
 
 /* layouts */

@@ -2,14 +2,14 @@
 title: Kitchen Sink
 metaTitle: Kitchen Sink
 description: A post with an overview of different HTML elements
-datePublished: 2025-09-20T08:00:00
+datePublished: 2026-01-31T08:00:00
 image:
   url: /images/team.png
   alt: Here's the team
 ---
-# Let's do a Kitchen Sink
+## Let's do a Kitchen Sink
 
-## Headings
+### Headings
 
 # Lorem Heading H1
 
@@ -23,7 +23,7 @@ image:
 
 ###### Lorem Heading H6
 
-## Paragraph text and formatting
+### Paragraph text and formatting
 
 Jaded zombies acted quaintly but kept driving their oxen forward.
 
@@ -36,26 +36,26 @@ Lorem ipsum with single asterisk \*I am Emphasized\*: *I am Emphasized &lt;em&gt
 Lorem ipsum with double tilde \~\~I am Striked\~\~: ~~I am Striked &lt;del&gt;~~  
 Lorem ipsum with backticks \`I am inline code\`: `I am inline code <code>`  
 
-## Quotes
+### Quotes
 
 > I am a blockquote
 >> I am nested
 
-## Lists
+### Lists
 
-### Unordered
+#### Unordered
 
 - item 1
 - item 2
 - item 3
 
-### Ordered
+#### Ordered
 
 1. item A
 2. item B
 3. item C
 
-## Tables
+### Tables
 
 | First Column | Second Column | Third Column | Last Column |
 | ---------- | ---------- | ---------- | ---------- |

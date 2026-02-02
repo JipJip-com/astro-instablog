@@ -3,31 +3,42 @@ title: Creating New Posts with InstaBlog is Super Easy
 metaTitle: How to create new posts with InstaBlog
 description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, possimus dolorem. Mollitia molestiae, velit labore reprehenderit hic pariatur!
 excerpt: Testing the excerpt. This text should be shown instead of the description
-datePublished: 2025-12-11T21:00:00
+datePublished: 2026-02-01T21:00:00
 image: 
   url: /images/enter_office.png
   alt: Entering the office
 keywords: testing,the,keywords
 ---
 
-## Why Astro?
+## Why this post?
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, possimus dolorem. Mollitia molestiae, velit labore reprehenderit hic pariatur cumque odio soluta laudantium aut magni harum molestias voluptatem blanditiis consequuntur delectus rem sed. Eveniet quasi sapiente unde, atque explicabo voluptatibus placeat beatae! Magni in velit facilis, nulla debitis maiores iusto consequatur?
+To tell you a bit more about title, metaTitle, description, excerpt, etc.  
+It's probably obvious, but stick around.  
 
-## 5 Reasons to Use Astro
+### title
 
-### Consectetur Adipisicing
+The **title** will be used as heading 1 in the post, but also as a title in the overview cards.  
+The **metaTitle** is used in the `<head>` section of the page as `<title>`.
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ducimus atque iusto placeat laudantium cum ut porro libero, officiis quos, suscipit adipisci, perferendis iste aliquam sit veritatis sunt rerum eaque fuga veniam animi! Animi nesciunt aut distinctio magnam eveniet **excepturi** voluptate repellendus odit nam sit rerum, natus illum, laborum esse omnis culpa eaque? Corporis exercitationem dolor aperiam sit in nisi!
+### description
 
-### Odio Dolores Doloremque
+**description** is what will be added to the `<head>` as `<meta name='description'...>`, but also as body text in the overview cards when the **excerpt** is missing.
 
-Placeat temporibus accusamus, eligendi illo exercitationem esse minima beatae laborum dignissimos, ut quia deleniti animi pariatur. Maxime, minus molestias? **Cumque dolor** hic dolorem aperiam magni quisquam commodi ea vitae doloremque!
+### excerpt
 
-Ipsam et hic in culpa vero aliquid non assumenda. Neque, a. Similique non, enim deleniti nemo quia excepturi, soluta quas in iste, fuga nihil assumenda harum laborum inventore perspiciatis minima!
+This overwrites the description in the overview cards in case you want to use a different text there.
 
-Odio dolores doloremque tempore repellat rerum, iusto quis voluptas aut perferendis est quaerat hic facilis! Quos incidunt tempora asperiores nostrum accusantium totam similique, quasi nisi perferendis nulla illo veniam earum pariatur voluptas culpa corrupti iusto **consectetur sapiente deserunt** esse? Consequuntur, assumenda! Soluta quod dignissimos facere recusandae nemo velit magnam eos enim aliquid provident labore minus, esse praesentium cupiditate. Ipsam, quisquam.
+### datePublished
 
-- enim deleniti nemo quia excepturi
-- quia deleniti animi pariatur
-- quasi nisi perferendis
+Obviously, the date you will publish it (and yes, you have to set this by hand in an valid format...).  
+**IF** this is empty, the post will not be rendered, simulating a sort of draft version
+
+### image
+
+Well... You get it I guess...  
+leave the alt if you don't want to add text to it.  
+
+### keywords
+
+This can't be much of a surprise can it?  
+Keywords for the meta tag.

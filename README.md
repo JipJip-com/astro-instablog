@@ -21,11 +21,14 @@ InstaBlog is a free Astro website template to help you kickstart your blog.
 
 ## Installation
 
-### Create
+### Download
 
-```npm create astro@latest -- --template JipJip-com/instablog```
+Download the latest version at: https://github.com/JipJip-com/astro-instablog by any means you like and extract it if necessary.  
+Go to the extracted folder and run:
 
-TBD... 
+```npm install```
+
+Customize the project to your liking (see below)  
 
 ### Project Folder
 
