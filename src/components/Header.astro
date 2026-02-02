@@ -1,0 +1,24 @@
+---
+import '@styles/header.css';
+import NavBar from '@components/NavBar.astro';
+import Logo from '@components/Logo.astro';
+
+/* HEADER, obviously... */
+---
+<header>
+  <nav 
+    class="skipnav" 
+    aria-label="Skip links">
+    <div class="nav__container">
+      <ul class="nav__list">
+        <li><a href="#main-content" class="skip-link">Skip to main content</a></li>
+        <li><a href="#footer" class="skip-link">Skip to footer</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="cntr">
+    <Logo />
+    <NavBar />
+  </div>
+</header>

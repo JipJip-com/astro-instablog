@@ -1,0 +1,45 @@
+---
+import '@styles/article.css';
+
+import { getCollection, render } from "astro:content";
+import { settings } from '@config/site.json';
+
+import Layout from "@layouts/Layout.astro";
+
+/* Generate a new path for every blog entry */
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const meta = Astro.props.entry.data,
+      { Content } = await render(Astro.props.entry);
+---
+
+<Layout meta={meta}>
+  <section>
+    <article class="cntr">
+      <div class="cntr">
+        <h1>{meta.title}</h1>
+        {
+          meta.datePublished &&
+          <div class="art__date">{meta.datePublished?.toLocaleDateString()}</div>
+        }
+        { meta.image?.url &&
+          <img 
+            class="art_img"
+            src={meta.image.url}
+            alt={meta.image.alt}
+            width={settings.blogImageWidth}
+            height={settings.blogImageHeight}
+          />
+        }
+      </div>
+      <div class="cntr">
+        <Content />
+      </div>
+    </article>
+</Layout>

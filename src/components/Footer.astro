@@ -1,0 +1,50 @@
+---
+import {footer, social, logo} from "@config/site.json";
+
+/* Footer */
+---
+<footer id="footer">
+  <div class="cntr">
+    <div><img 
+      src={logo.image.url}
+      alt={logo.image.alt}
+      width={logo.image.size.width}
+      height={logo.image.size.height}
+      loading="lazy">
+    </div>
+    { footer.links &&
+      <nav>
+        <ul class="f__menu">
+          {
+          footer.links.map((link) => {
+            return (
+              <li>
+                <a href={link.url}
+                  title={link.title}>{link.page}</a>
+              </li>
+            )
+          })
+        }
+      </ul>
+      </nav>
+    }
+    <div>{footer.copyright}</div>
+    { social &&
+      <nav>
+        <ul class="f__menu">
+          {
+          social.map((link) => {
+            return (
+              <li>
+                <a href={link.url}
+                  title={link.title}
+                  target="_blank">{link.page}</a>
+              </li>
+            )
+          })
+        }
+      </ul>
+      </nav>
+    }
+  </div>
+</footer>

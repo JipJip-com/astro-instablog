@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "lang": "en",
+    "title": "My InstaBlog Astro Theme",
+    "description": "A Super-Clean, Lightning-Fast, Astro Theme to Kickstart a Blog"
+  },
+  "settings": {
+    "excerptLength": 150,
+    "blogImageWidth": 768,
+    "blogImageHeight": 432,
+    "formEndPoint": "https://api.web3forms.com/submit",
+    "formMethod": "POST",
+    "formSecretKeyName": "[yourkeyhere]",
+    "formSecretKey": "[yourkeyhere]"
+  },
+  "logo": {
+    "image": {
+      "url": "/images/iblogo.svg",
+      "size": {
+        "width": "50",
+        "height": "50"
+      },
+      "alt": "InstaBlog Astro Theme Logo"
+    },
+    "text": "InstaBlog"
+  },
+  "main": {
+    "menu": [
+      {
+        "page": "Home",
+        "url": "/",
+        "title": "Go Home"
+      }, {
+        "page": "Blog",
+        "url": "/blog",
+        "title": "Go to Blog"
+      }, {
+        "page": "About",
+        "url": "/about",
+        "title": "Go to About"
+      }, {
+        "page": "Contact",
+        "url": "/contact",
+        "title": "Go to Contact page"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© 2025 InstaBlog Astro Theme by JipJip.com",
+    "links": [
+      {
+        "page": "Home",
+        "url": "/",
+        "title": "Go Home"
+      }, {
+        "page": "Blog",
+        "url": "/blog",
+        "title": "Go to Blog"
+      }, {
+        "page": "About",
+        "url": "/about",
+        "title": "Go to About"
+      }
+    ]
+  },
+  "social": [
+      {
+        "page": "GitHub",
+        "url": "https://github.com/",
+        "title": "Go to Github"
+      }, {
+        "page": "CodePen",
+        "url": "https://codepen.io/",
+        "title": "Go to CodePen"
+      }, {
+        "page": "Facebook",
+        "url": "https://www.facebook.com/",
+        "title": "Go to Facebook"
+      }
+    ]
+}

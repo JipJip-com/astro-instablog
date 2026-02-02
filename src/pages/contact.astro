@@ -1,0 +1,19 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getContent } from "@lib/parseContent";
+
+import Form from "@components/Contact.astro";
+
+const {meta, Content} = await getContent('contact');
+
+/*  ABOUT PAGE */
+---
+
+<Layout meta={meta}>
+  <section>
+    <article class="cntr">
+      <Content />
+      <Form meta={meta} />
+    </article>
+  </section>
+</Layout>

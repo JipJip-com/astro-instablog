@@ -1,0 +1,67 @@
+---
+import '@styles/forms.css';
+import { settings } from "@config/site.json";
+
+const { meta } = Astro.props;
+---
+
+<form 
+  class="contact" 
+  action={settings.formEndPoint} 
+  method={settings.formMethod} >
+    { settings.formSecretKey &&
+      <input 
+        type="hidden" 
+        name={settings.formSecretKeyName} 
+        value={settings.formSecretKey} />
+    }
+    <input 
+      type="hidden" 
+      name="subject" 
+      value={meta.subject} />
+    <input 
+      type="hidden" 
+      name="from_name" 
+      value={meta.from} />
+
+    <div class="groups">
+      <div class="group">
+        <label 
+          for="name" 
+          class="label">{meta.nameLabel}</label>
+        <input 
+          id="name" 
+          name="name" 
+          class="f__input" 
+          placeholder={meta.namePlaceholder}
+          required=true
+          type="text" />
+      </div>
+      <div class="group">
+        <label 
+          for="email" 
+          class="label">{meta.emailLabel}</label>
+        <input 
+          id="email" 
+          name="email" 
+          class="f__input" 
+          placeholder={meta.emailPlaceholder}
+          required=true
+          type="email" />
+      </div>
+      <div class="group">
+        <label 
+          for="message" 
+          class="label">{meta.messageLabel}</label>
+        <textarea 
+          class="f__textarea" 
+          id="message" 
+          name="message" 
+          required=true
+          placeholder={meta.messagePlaceholder}></textarea>
+      </div>
+    </div>
+    <button 
+      class="btn" 
+      type="submit">{meta.sendMessage}</button>
+  </form>

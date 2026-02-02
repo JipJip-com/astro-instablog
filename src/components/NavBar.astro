@@ -1,0 +1,50 @@
+---
+import {main} from "@config/site.json";
+---
+<Fragment>
+  { main.menu &&
+    <div class="nb__mainmenu">
+      <input aria-hidden="true" 
+            type="checkbox" 
+            class="nb__menu-state"
+            id="menuState"/>
+      <nav 
+        class="nb__nav">
+        <div class="nb__button">
+          <a 
+            class="show" 
+            role="button" 
+            href="#menuState">
+            <span class="visually-hidden">Show menu</span>
+          </a>
+          <a 
+            class="hide" 
+            role="button" 
+            href="#">
+            <span class="visually-hidden">Hide menu</span>
+          </a>
+
+          <label 
+            aria-hidden="true"
+            class="nb__label"
+            for="menuState" >
+            <span class="show">≡</span>
+            <span class="hide">×</span>
+          </label>
+        </div>
+        <ul class="nb__menu">
+          {
+          main.menu.map((link) => {
+            return (
+              <li class="nb__menu-item">
+                <a href={link.url}
+                  title={link.title}>{link.page}</a>
+              </li>
+            )
+          })
+        }
+      </ul>
+      </nav>
+    </div>
+  }
+</Fragment>

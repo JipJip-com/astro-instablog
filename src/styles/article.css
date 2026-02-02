@@ -1,0 +1,8 @@
+.art_img {
+  object-fit: cover;
+}
+
+.art__date {
+  order: -1;
+  font-size: 1rem;
+}

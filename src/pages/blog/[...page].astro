@@ -1,0 +1,84 @@
+---
+import '@styles/articles.css';
+import Layout from "@layouts/Layout.astro";
+import { getFilteredArticles } from "@lib/getArticles";
+import { getContent } from "@lib/parseContent";
+import type { GetStaticPathsOptions } from "astro";
+import { Image } from "astro:assets";
+import Heading from '@components/Heading.astro';
+import { settings } from '@config/site.json';
+import Pagination from '@components/Pagination.astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const articles = await getFilteredArticles();
+
+  return paginate(articles, {
+    pageSize: 5,
+    props: {
+      basePath: '/blog'
+    }
+  });
+}
+
+const articles = await getFilteredArticles(),
+      { page, basePath } = Astro.props,
+      cappedExcerpt = (excerpt:string) => {
+        if (excerpt.length < settings.excerptLength) { return excerpt }
+
+        return (
+          excerpt.slice(0, settings.excerptLength) + '...'
+        )
+      },
+      {meta, Content} = await getContent('blog');
+
+/*  BLOG LANDINGSPAGES */
+---
+
+<Layout meta={meta}>
+  <section>
+    <article class="cntr">
+      <h1>{meta.title}</h1>
+      <Content />
+    </article> 
+  </section>
+  <section>
+    <div class="cntr">
+      <div class="cntr posts">
+        {page.data &&
+          page.data.map(article => {
+            let postClass = article.id == articles[0].id ? "post --p-top" : "post";
+
+            return (
+              <a 
+                class={postClass}
+                href={`/blog/${article.id}`}
+                aria-label={article.data.title}>
+                <div class="p__head">
+                  { article.data.image?.url &&
+                    <Image 
+                      src={article.data.image.url}
+                      alt={article.data.image?.alt || ''}
+                      sizes="(max-width: 800px) 100vw, 800px"
+                      width={160}
+                      height={90}
+                      loading="eager"
+                      decoding="async" 
+                      class="p__img"/>
+                  }
+                </div>
+                <div class="p__body">
+                  <Heading 
+                    as="h2" 
+                    class="p__title">{article.data.title}</Heading>
+                  <div class="p__date">{article.data.datePublished?.toLocaleDateString()}</div>
+                  <div class="p__ex">{cappedExcerpt(article.data.excerpt ? article.data.excerpt : article.data.description)}</div>
+                </div>
+              </a>
+            )
+          })
+        }
+      </div>
+      <Pagination page={page} basePath={basePath}/>
+    </div>
+  </section>  
+</Layout>

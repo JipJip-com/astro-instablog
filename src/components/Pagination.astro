@@ -1,0 +1,16 @@
+---
+const { page, basePath } = Astro.props,
+      first = { url: basePath, text: '1', int: 1 },
+      last = { url: basePath + '/' + page.lastPage, text: page.lastPage, int: page.lastPage }
+---
+<div class="cntr paginate">
+  <nav>
+    {page.url.first && page.url.first != page.url.prev && first && <a href={first.url} class="btn">{first.text}</a>}
+    {page.currentPage - 3 > 0 && <span>...</span>}
+    {page.url.prev && <a href={page.url.prev} class="btn">{page.currentPage-1}</a>}
+    {page.currentPage && <span>{page.currentPage}</span>}
+    {page.url.next && <a href={page.url.next} class="btn">{page.currentPage+1}</a>}
+    {page.currentPage + 2 - last.int < 0 && <span>...</span>}
+    {page.url.last && page.url.last != page.url.next && last && <a href={last.url} class="btn">{last.text}</a>}
+  </nav>
+</div>

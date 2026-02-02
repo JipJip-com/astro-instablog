@@ -1,0 +1,145 @@
+header {
+  --a-c: var(--c-base2);
+  --ah-c: var(--c-sup1);
+  --cntr-gtc: auto 1fr;
+  --cntr-pb: .5rem 1rem;
+  --cntr-ai: end;
+  --cntr-ji: right;
+  --menu-js: end;
+
+  background-color: var(--c-main);
+  color: var(--c-base2);    
+}
+
+/* Skiplink for navigation */
+.skipnav {
+  height: 2rem;
+  margin-top: -2rem;
+
+  &:has(:focus) {
+    margin-top: 0;
+  }
+}
+
+.nav__list {
+  gap: 1rem;
+  list-style-type: none;
+  display: flex;
+}
+
+/* no-js responsive menu */
+:where(
+  body:has(.nb__menu-state:checked), 
+  body:has(#menuState:target)) {
+  --menu-display: block;
+  --menu-item-left: 0;
+  --menu-show: none;
+  --menu-hide: block;
+  --menu-inset: 0 0 auto auto;
+  --menu-width: 100svw;
+  --menu-height: 100svh;
+  --menu-bg-duration: .2s;
+  --menu-bg-delay: 0.05s;
+  --menu-radius: 0;
+
+  position:fixed;
+}
+
+.nb__menu-state {
+  display: none;
+}
+
+.nb__button:has(:focus) {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+
+  * {
+    outline: none;
+  }
+}
+
+.nb__menu {
+  position: relative;
+  display: var(--menu-display, none);
+  list-style-type: none;
+  overflow: hidden;
+  justify-items: end;
+  transition: var(--no-anim, 1s display allow-discrete);
+}
+
+.nb__menu-item {
+  position: relative;
+  display: block;
+  left: var(--menu-item-left, 100svw);
+  font-size: 2rem;
+  line-height: 1.5;
+  transition: var(--no-anim, 0.3s left var(--glbl-cb) calc(sibling-index() * .1s));
+}
+
+.nb__nav {
+  position: absolute;
+  justify-items: end;
+  inset: 0 0 auto auto;
+  padding: 1rem;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    display:block;
+    inset: var(--menu-inset, .5rem 0 auto auto);
+    z-index: -1;
+    border-radius: var(--menu-radius, 1rem 0 0 1rem);
+    background-color: var(--c-sup1);
+    width: var(--menu-width, 3.5rem);
+    height: var(--menu-height, 3rem);
+    transition: 
+      var(--no-anim, 
+        var(--menu-bg-duration, .2s) all var(--glbl-cb) var(--menu-bg-delay, 0.4s));
+  }
+}
+
+.nb__label {
+  font-size: 1.75rem;
+}
+
+.show {
+  display: var(--menu-show, block);
+}
+
+.hide {
+  display: var(--menu-hide, none);
+}
+
+@starting-style {
+  .nb__menu-item {
+    left: 100svw;
+  }
+}
+
+@media(width > 768px) {
+  .nb__button {
+    display: none;
+  }
+
+  .nb__nav {
+    position: unset;
+    padding: unset;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  .nb__menu {
+    position: unset;
+    display: flex;
+    gap: 1rem;
+    overflow: unset;
+  }
+  .nb__menu-item {
+    left: unset;
+    font-size: inherit;
+    line-height: inherit;
+  }
+}

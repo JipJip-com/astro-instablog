@@ -1,0 +1,206 @@
+/* Serve font from public folder */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+:root {
+  --c-base0: #1e1e2a; /* Base color 0 */
+  --c-base1: #FFFFFF; /* Base color 1 */
+  --c-base2: var(--c-base1);  /* Base color 2 */
+  --c-main:  #6f41a0; /* Main color */
+  --c-sup0: #353399; /* Support color 0 */
+  --c-sup1: #dc889a; /* Support color 1 */
+  --c-sup2: #ebe6e7; /* Support color 2 */
+  --c-sup3: var(--c-sup0); /* Support color 3 */
+
+  /* fonts */
+  --ff-base: "Inter","Segoe UI","Roboto","Helvetica","Arial","sans-serif"; /* base font family and back-ups */
+
+  /* transitions */
+  --glbl-cb: cubic-bezier(.17,.67,.77,1); /* global variable for easing functions */
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-base0: #FFFFFF; /* Base color 0 */
+    --c-base1: #3A3A3A; /* Base color 1 */
+    --c-base2: var(--c-base0); /* Base color 2 */
+    --c-main:  #6f41a0; /* Main color */
+    --c-sup0: #ebe6e7; /* Support color 0 */
+    --c-sup1: #dc889a; /* Support color 1 */
+    --c-sup2: #1e1e2a; /* Support color 2 */
+    --c-sup3: #353399; /* Support color 3 */
+  }
+}
+
+/* reset css */
+*, *::before, *::after {
+  box-sizing: border-box;
+  inset: 0;
+}
+
+body,
+ul, ol,
+*::before, *::after {
+  padding: 0;
+  margin: 0;
+}
+
+ul,ol {
+  list-style-position: inside;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+  margin-block: .5rem;
+}
+
+*:focus {
+  outline: var(--f-o, 2px solid var(--c-base0));
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* defaults */
+h1,h2,h3,h4,h5,h6 {
+  text-wrap: balance;
+}
+
+a {
+  color: var(--a-c, var(--c-sup0)); /* --a-c: anchor color */
+  
+  transition: 
+    var(--no-anim, 0.2s color var(--glbl-cb));
+
+  &:hover {
+    --a-c: var(--ah-c, var(--c-sup0)); /* --ah-c: anchor hover color */
+  }
+}
+
+button {
+  border: none;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+article {
+  --cntr-g: 0;
+}
+
+body {
+  background-color: var(--c-sup2);
+  color: var(--c-base0);
+  font-family: var(--ff-base);
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+/* layouts */
+footer {
+  --a-c: var(--c-base2);
+  --ah-c: var(--c-sup1);
+
+  background-color: var(--c-main);
+  color: var(--c-base2);
+  text-align: center;
+  padding-block: 2rem;  
+}
+
+main {
+  min-height: clamp(50lvh, 100%, 100vh);
+}
+
+/* components */
+/* container */
+.cntr {
+  display: grid;
+  grid-template-columns: var(--cntr-gtc, 1fr);
+  gap: var(--cntr-g, 1rem);
+  align-items: var(--cntr-ai, inherit);
+  justify-items: var(--cntr-ji, inherit);
+  padding-block: var(--cntr-pb, 1rem);
+  padding-inline: var(--cntr-pi, 1rem);
+  margin-inline: auto;
+  max-width: var(--cntr-mw, 100vw);
+  width: 100%;
+
+  .cntr {
+    --cntr-pb: var(--cntro-pb, 0);
+    --cntr-pi: var(--cntro-pi, 0);
+    --cntr-g: var(--cntro-g, 0);
+  }
+}
+
+.logo {
+  display: flex;
+  justify-items: end;
+  align-items: end;
+}
+
+.paginate {
+  --cntro-pb: 2rem;
+  
+  place-items: center;
+}
+
+.btn {
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  background-color: var(--btnh-bgc, var(--c-main));
+  color: var(--c-base2);
+  text-decoration: none;
+  transition: 
+    var(--no-anim, 
+      .2s color var(--glbl-cb),
+      .2s background-color var(--glbl-cb));
+
+  &:hover {
+    --btnh-bgc: var(--c-sup3);
+  }
+}
+
+/* navigation */
+/* footer menu */
+.f__menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-self: var(--menu-js, center);
+  list-style-type: none;
+}
+
+/* utilities */
+.visually-hidden {
+  height: 1px;
+  overflow: clip;
+  position: absolute;
+  width: 1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* set defaults for omitting animations */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --no-anim: none; /* to overwrite all current transitions */
+  }
+}
+
+@media(width > 768px) {
+  :root {
+    --cntr-mw: 768px;
+    --cntr-pi: 0;
+  }
+}

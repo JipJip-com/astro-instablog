@@ -1,0 +1,9 @@
+.--s-h {
+  --cntr-pb: 0;
+  --cntr-g: 0;
+  --ho-c: var(--c-sup0);
+
+  padding-block: 1rem 4rem;
+  background-color: var(--c-main);
+  color: var(--c-base2);
+}

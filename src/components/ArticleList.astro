@@ -1,0 +1,73 @@
+---
+import '@styles/articles.css';
+
+import Heading from '@components/Heading.astro';
+import { getFilteredArticles } from '@lib/getArticles';
+import { Image } from "astro:assets";
+import { settings } from '@config/site.json';
+
+const { meta } = Astro.props,
+      articles = await getFilteredArticles(meta.articleBlockMax),
+      cappedExcerpt = (excerpt:string) => {
+        if (excerpt.length < settings.excerptLength) { return excerpt }
+
+        return (
+          excerpt.slice(0, settings.excerptLength) + '...'
+        )
+      },
+      level1 = 'h2',
+      level2 = 'h3';
+
+/* ArticleList*/
+---
+<section>
+  <div class="cntr">
+    { meta.articleBlockTitle &&
+      <Heading as={level1}>{ meta.articleBlockTitle }</Heading>
+    }
+    <div class="cntr posts">
+      
+      {articles &&
+        articles.map(article => {
+          let postClass = article == articles[0] ? "post --p-top" : "post";
+
+          return (
+            <a 
+              class={postClass}
+              href={`/blog/${article.id}`}
+              aria-label={article.data.title}>
+              <div class="p__head">
+                { article.data.image?.url &&
+                  <Image 
+                    src={article.data.image.url}
+                    alt={article.data.image?.alt || ''}
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    width={160}
+                    height={90}
+                    loading="eager"
+                    decoding="async" 
+                    class="p__img"/>
+                }
+              </div>
+              <div class="p__body">
+                <Heading 
+                  as={level2} 
+                  class="p__title">{article.data.title}</Heading>
+                <div class="p__date">{article.data.datePublished?.toLocaleDateString()}</div>
+                <div class="p__ex">{cappedExcerpt(article.data.excerpt ? article.data.excerpt : article.data.description)}</div>
+              </div>
+            </a>
+          )
+        })
+      }
+      { meta.articleBlockReadAll && meta.articleBlockReadAll.url &&
+        <div class="posts__more">
+          <a 
+            href={meta.articleBlockReadAll.url} 
+            title={meta.articleBlockReadAll.title}
+            class="btn">{meta.articleBlockReadAll.text}</a>
+        </div>
+      }
+    </div>
+  </div>
+</section>

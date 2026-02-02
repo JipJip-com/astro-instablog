@@ -1,0 +1,15 @@
+---
+import '@styles/hero.css';
+
+const Content = Astro.props.content,
+      meta = Astro.props.meta;
+
+/* HERO */
+---
+
+<section class="--s-h">
+  <div class="cntr">
+    <h1>{meta.title}</h1>
+    <Content />
+  </div>
+</section>

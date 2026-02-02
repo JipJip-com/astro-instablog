@@ -1,0 +1,10 @@
+---
+const { as: As = "h2", ...attrs } = Astro.props;
+
+---
+
+<As 
+  {...attrs}
+>
+  <slot />
+</As>

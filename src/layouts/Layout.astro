@@ -1,0 +1,43 @@
+---
+import '@styles/base.css';
+
+import { SEO } from "astro-seo";
+import { meta } from '@config/site.json';
+
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
+const title = Astro.props.meta.metaTitle || Astro.props.meta.metaTitle || meta.title,
+      description = Astro.props.meta.description || meta.description,
+      canonical = Astro.props.meta.seoCanonical || Astro.url
+
+/* Base Layout */
+---
+
+<!DOCTYPE html>
+<html lang={meta.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/images/favicon.svg" sizes="any" type="image/svg+xml">
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+    />
+    { Astro.props.meta.keywords && 
+      <meta name="keywords" content={Astro.props.meta.keywords} />
+    }
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <a 
+        name="main-content" 
+        tabindex="-1" 
+        aria-hidden="true"></a>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

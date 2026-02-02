@@ -1,0 +1,19 @@
+---
+import {logo} from '@config/site.json';
+
+/* Logo */
+---
+<Fragment>
+  <div class="logo">
+  { logo.image && 
+    <img 
+      src={logo.image.url}
+      alt={logo.image.alt}
+      width={logo.image.size.width || 1}
+      height={logo.image.size.height || 1} />
+  }
+  { logo.text && 
+    <div>{logo.text}</div>
+  }
+  </div>
+</Fragment>
