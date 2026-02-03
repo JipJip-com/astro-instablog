@@ -4,7 +4,7 @@ InstaBlog is a free Astro website template to help you kickstart your blog.
 
 ## Live Demo
 
-[https://jipjip.com/themes/astro/preview/instablog](https://jipjip.com/themes/astro/preview/instablog)
+[https://jipjip.com/themes/astro/instablog/](https://jipjip.com/themes/astro/instablog/)
 
 ## Features
 
